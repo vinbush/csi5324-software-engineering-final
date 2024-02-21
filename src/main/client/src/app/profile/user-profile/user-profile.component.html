@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Your requests</h3>
+      <div *ngFor="let request of profile.requests">
+        <div class="card mt-2">
+          <app-request-card 
+            [request]="request"></app-request-card>
+          <div class="card-footer">
+            <button *ngIf="auth.isRealtor()" class="btn btn-primary mr-2  btn-sm" (click)="respondToRequest(request.id, false)">Respond</button>
+            <button *ngIf="request.response != null" class="btn btn-primary btn-sm" (click)="readResponse(request.id, false)">View Response</button>
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Your offers</h3>
+      <div *ngFor="let offer of profile.offers">
+        <div class="card mt-2">
+          <app-request-card
+            [request]="offer"></app-request-card>
+          <div class="card-footer">
+            <button *ngIf="auth.isRealtor()" class="btn btn-primary mr-2  btn-sm" (click)="respondToRequest(offer.id, true)">Respond</button>
+            <button *ngIf="offer.response != null" class="btn btn-primary btn-sm" (click)="readResponse(offer.id, true)">View Response</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="auth.isBuyer()" class="col-md-4">
+      <h3>Your favorites</h3>
+      <div *ngFor="let fav of profile.favorites">
+        <div class="card mt-2">
+          <div class="card-body">
+            <h5 class="card-title"><a [routerLink]="['/listing', fav.listingId]">{{fav.listingTitle}}</a></h5>
+            <p>{{fav.note}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button #openModalButton id="openModalButton" type="button" class="d-none" data-toggle="modal" data-target="#responseModal"></button>
+<div class="modal" id="responseModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 *ngIf="!modalShouldViewResponse" class="modal-title">Respond to Buyer</h5>
+        <h5 *ngIf="modalShouldViewResponse" class="modal-title">View Response</h5>
+        <button #closeModalButton id="closeModalButton" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-response-form *ngIf="!modalShouldViewResponse" [request]="chosenRequest" (responseSent)="closeModal($event)"></app-response-form>
+        <div *ngIf="modalShouldViewResponse">
+          <h5 *ngIf="auth.isBuyer">Response to your {{isOffer ? 'offer' : 'request'}} from {{chosenRequest.realtorName}}</h5>
+          <h5 *ngIf="!auth.isBuyer">Your response to {{isOffer ? 'offer' : 'request'}} from {{chosenRequest.buyerName}}</h5>
+          <h6>Listing: {{chosenRequest.listingTitle}}</h6>
+          <h6>Original message:</h6>
+          <p>{{chosenRequest.textBody}}</p>
+          <h6>Realtor response:</h6>
+          <p>{{chosenResponse.textBody}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

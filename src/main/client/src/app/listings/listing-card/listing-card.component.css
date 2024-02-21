@@ -1,0 +1,5 @@
+.cardPhoto {
+  width: 100%;
+  height: 8vw;
+  object-fit: cover;
+}

@@ -1,0 +1,108 @@
+<div class="container" [ngClass]="{'loading': isSubmitting === true}">
+  <h2>Add a Listing</h2>
+  <form>
+    <h3>Enter an address to get started</h3>
+    <div class="form-group">
+      <input type="text" id="autocomplete" class="form-control">
+    </div>
+    <h3>Confirm the address below</h3>
+    <p>Be sure to fill out the unit number if this is an apartment or condo</p>
+    <div class="form-group">
+      <label>Street Address</label>
+      <input [(ngModel)]="model.street" name="street" type="text" class="form-control" disabled>
+    </div>
+    <div class="form-group">
+      <label>Unit Number</label>
+      <input [(ngModel)]="model.unitNum" name="unitNum" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>City</label>
+      <input [(ngModel)]="model.city" name="city" type="text" class="form-control" disabled>
+    </div>
+    <div class="form-group">
+      <label>State</label>
+      <input [(ngModel)]="model.state" name="state" type="text" class="form-control" disabled>
+    </div>
+    <div class="form-group">
+      <label>Zip Code</label>
+      <input [(ngModel)]="model.zipCode" name="zipCode" type="text" class="form-control" disabled>
+    </div>
+    <input type="hidden" [(ngModel)]="model.latitude" name="latitude">
+    <input type="hidden" [(ngModel)]="model.longitude" name="longitude">
+    <h3>Now fill out the details</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Title</label>
+          <input [(ngModel)]="model.title" name="title" type="text" class="form-control">
+          <small class="form-text text-muted">A succinct one-line description of the property.</small>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea [(ngModel)]="model.description" name="description" class="form-control" rows="3"></textarea>
+          <small class="form-text text-muted">A thorough description of the property.</small>
+        </div>
+        <div class="form-group">
+          <label>Price</label>
+          <input [(ngModel)]="model.listingPrice" name="listingPrice" type="number" class="form-control">
+          <small class="form-text text-muted">Enter price in USD.</small>
+        </div>
+        <div class="form-group">
+          <label>Property Size</label>
+          <input [(ngModel)]="model.propertySize" name="propertySize" type="number" class="form-control">
+          <small class="form-text text-muted">Enter in square feet.</small>
+        </div>
+        <div class="form-group">
+          <label>House Size</label>
+          <input [(ngModel)]="model.houseSize" name="houseSize" type="number" class="form-control">
+          <small class="form-text text-muted">Enter in square feet.</small>
+        </div>
+      </div> <!--col-md-6-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Number of Bedrooms</label>
+          <input [(ngModel)]="model.numBed" name="numBed" type="number" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Number of Bathrooms</label>
+          <input [(ngModel)]="model.numBath" name="numBath" type="number" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Number of floors</label>
+          <input [(ngModel)]="model.numFloors" name="numFloors" type="number" class="form-control">
+        </div>
+        <div class="form-group">
+          <label >Listing Type</label>
+          <select [(ngModel)]="model.listingType" name="listingType" class="form-control">
+            <option *ngFor="let type of dataService.LISTING_TYPES | keyvalue" [value]="type.key">{{type.value}}</option>
+          </select>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input [(ngModel)]="model.basement" name="basement" class="form-check-input" type="checkbox" value="" checked="">
+            Has a basement?
+          </label>
+        </div>
+      </div> <!--col-md-6-->
+    </div> <!--row-->
+    <h3>Now upload your photos</h3>
+    <div class="form-group">
+      <label for="fileUpload">Upload images (at least one required) (max file size 5MB)</label>
+      <input type="file" (change)="onFileChanged($event)" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*" class="form-control"/>
+      <ul>
+        <li *ngFor="let file of files">
+          {{file.name}}
+        </li>
+      </ul>
+    </div>
+    <!-- <img [src]="imgURL" height="200" *ngIf="imgURL"> -->
+    
+  </form>
+  <button type="button" class="btn btn-primary" (click)="save()">Submit Listing</button>
+
+  
+        
+  <div *ngIf="hasLink" class="alert alert-success mt-4">
+    <strong>Success!</strong> <a [routerLink]="['/listing', this.linkId]" class="alert-link"> View your new listing here</a>.
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <h2>{{realtor.name}}</h2>
+  <div class="row">
+          <div class="col-md-6">
+                <img class="img-fluid" [src]="sanitizer.bypassSecurityTrustUrl(photo)" alt="Photo">
+          </div>
+          <div class="col-md-6">
+              <div class="card mb-4">
+                  <div class="card-body">
+                      <h5 class="card-title">About this realtor</h5>
+                      <p>Something here</p>
+                  </div>
+              </div>
+              <div class="card mb-4">
+                  <div class="card-body">
+                      <h5 class="card-title">Realtor Details</h5>
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Agency: {{realtor.agency}}</li>
+                          <li class="list-group-item">Brokerage: {{realtor.brokerage}}</li>
+                          <li class="list-group-item">Years of experience: {{realtor.yearsExperience}}</li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="card mb-4">
+                  <div class="card-body">
+                      <h5 class="card-title">Contact</h5>
+                      <p>{{realtor.website}}</p>
+                      <p>{{realtor.phone}}</p>
+                      <h5 class="card-title">Location</h5>
+                      {{realtor.street}}<br>
+                      {{realtor.city}}, {{realtor.state}}<br>
+                      {{realtor.zipCode}}<br>
+                  </div>
+              </div>
+          </div>
+  </div> <!--row-->
+  <h3>Buyer reviews for {{realtor.name}}</h3>
+  <a [routerLink]="['/realtor', realtor.id, 'review']" class="btn btn-warning">Leave a review</a>
+  <p *ngIf="reviews && reviews.length > 0">Overall rating: {{(realtor.averageRating/2).toFixed(2)}}</p>
+  <app-review-card *ngFor="let review of reviews"
+    [review]="review"></app-review-card>
+</div>

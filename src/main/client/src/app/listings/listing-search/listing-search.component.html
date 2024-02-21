@@ -1,0 +1,131 @@
+<!-- Search bar -->
+<div class="container-fluid">
+  <div class="card border-primary">
+    <div class="card-body" id="collapsibleInputs">
+      <h4 class="card-title">Find your house. Find your home.</h4>
+      <form role="form" (submit)="searchSubmit()" class="form-inline">
+        <input type="text" id="autocomplete" class="form-control mr-sm-2 p-2" placeholder="Search for a city, a state, or a specific address">
+        <!-- <input [(ngModel)]="filter.street" name="street" type="text" class="form-control mr-sm-2 p-2" placeholder="Street">
+        <input [(ngModel)]="filter.unitNum" name="unitNum" type="text" class="form-control mr-sm-2 p-2" placeholder="Unit Number">
+        <input [(ngModel)]="filter.city" name="city" type="text" class="form-control mr-sm-2 p-2" placeholder="City">
+        <input [(ngModel)]="filter.state" name="state" type="text" class="form-control mr-sm-2 p-2" placeholder="State">
+        <input [(ngModel)]="filter.zipCode" name="zipCode" type="text" class="form-control mr-sm-2 p-2" placeholder="ZIP Code"> -->
+        
+        <!-- price picker -->
+        <div class="input-group mr-sm-2">
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#pricePicker">Price</button>
+          <div class="card collapse collapseInput" id="pricePicker" data-parent="#collapsibleInputs">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text p-2">$</div>
+                    </div>
+                    <input [(ngModel)]="filter.minPrice" name="minPrice" type="number" class="form-control p-2" placeholder="Min price">
+                  </div> <!-- input-group -->
+                </div> <!-- col-6 -->
+                <div class="col-6">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text p-2">$</div>
+                    </div>
+                    <input [(ngModel)]="filter.maxPrice" name="maxPrice" type="number" class="form-control p-2" placeholder="Max price">
+                  </div> <!-- input-group -->
+                </div> <!-- col-6 -->
+              </div> <!-- row -->
+            </div> <!-- card-body -->
+          </div> <!-- card collapse collapseInput -->
+        </div> <!-- input-group -->
+  
+        <!-- bed picker -->
+        <div class="input-group mr-sm-2">
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#bedPicker">Beds/Baths</button>
+          <div class="card collapse collapseInput" id="bedPicker" data-parent="#collapsibleInputs">
+            <div class="card-body">
+              <h5 class="card-title">Bedrooms</h5>
+              <div class="row">
+                <div class="col-6">
+                  <div class="input-group">
+                    <input [(ngModel)]="filter.minNumBed" name="minNumBed" type="number" class="form-control p-2" placeholder="Min bedrooms">
+                  </div> <!-- input-group -->
+                </div> <!-- col-6 -->
+                <div class="col-6">
+                  <div class="input-group">
+                    <input [(ngModel)]="filter.maxNumBed" name="maxNumBed" type="number" class="form-control p-2" placeholder="Max bedrooms">
+                  </div> <!-- input-group -->
+                </div> <!-- col-6 -->
+              </div> <!-- row -->
+              <h5 class="card-title mt-2">Bathrooms</h5>
+              <div class="row">
+                <div class="col-6">
+                  <div class="input-group">
+                    <input [(ngModel)]="filter.minNumBath" name="minNumBath" type="number" class="form-control p-2" placeholder="Min bathrooms">
+                  </div> <!-- input-group -->
+                </div>
+                <div class="col-6">
+                  <div class="input-group">
+                    <input [(ngModel)]="filter.maxNumBath" name="maxNumBath" type="number" class="form-control p-2" placeholder="Max bathrooms">
+                  </div> <!-- input-group -->
+                </div> <!-- col-6 -->
+              </div> <!-- row -->
+            </div> <!-- card-body -->
+          </div> <!-- card collapse collapseInput -->
+        </div> <!-- input-group -->
+
+        <!-- size picker -->
+        <div class="input-group mr-sm-2">
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sizePicker">Size</button>
+          <div class="card collapse collapseInput" id="sizePicker" data-parent="#collapsibleInputs">
+            <div class="card-body">
+              <h5 class="card-title">House Size</h5>
+              <div class="row">
+                <div class="col-6">
+                  <div class="input-group">
+                    <input [(ngModel)]="filter.minHouseSize" name="minHouseSize" type="number" class="form-control p-2" placeholder="Min SQFT">
+                  </div> <!-- input-group -->
+                </div> <!-- col-6 -->
+                <div class="col-6">
+                  <div class="input-group">
+                    <input [(ngModel)]="filter.maxHouseSize" name="maxHouseSize" type="number" class="form-control p-2" placeholder="Max SQFT">
+                  </div> <!-- input-group -->
+                </div> <!-- col-6 -->
+              </div> <!-- row -->
+              <h5 class="card-title mt-2">Property Size</h5>
+              <div class="row">
+                <div class="col-6">
+                  <div class="input-group">
+                    <input [(ngModel)]="filter.minPropertySize" name="minPropertySize" type="number" class="form-control p-2" placeholder="Min SQFT">
+                  </div> <!-- input-group -->
+                </div>
+                <div class="col-6">
+                  <div class="input-group">
+                    <input [(ngModel)]="filter.maxPropertySize" name="maxPropertySize" type="number" class="form-control p-2" placeholder="Max SQFT">
+                  </div> <!-- input-group -->
+                </div> <!-- col-6 -->
+              </div> <!-- row -->
+            </div> <!-- card-body -->
+          </div> <!-- card collapse collapseInput -->
+        </div> <!-- input-group -->
+
+        <input type="submit" class="btn btn-warning" value="Search">
+      </form>
+    </div> <!-- card-body -->
+  </div> <!-- card -->
+</div> <!-- container-fluid -->
+
+<!-- Results area -->
+<div class="container-fluid">
+  <div class="row p-4">
+    <div class="col-md-7" id="map">
+    </div>
+    <div class="col-md-5 resultsHolder">
+      <div class="row">
+        <div *ngFor="let listing of searchResults" class="col-md-6">
+          <app-listing-card [listing]="listing"></app-listing-card>
+        </div>
+      </div>
+      <p *ngIf="failedSearch">No results. Try another search.</p>
+    </div>
+  </div>
+</div>

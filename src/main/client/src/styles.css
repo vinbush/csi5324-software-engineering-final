@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*/
+
+.loading {
+  position: relative;
+}
+
+.loading:after {
+  content: " ";
+  z-index: 10;
+  display: block;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.prettyPink button.btn-primary {
+  background-color: palevioletred;
+}
+
+.prettyPink button.btn-warning {
+  background-color: yellow;
+}

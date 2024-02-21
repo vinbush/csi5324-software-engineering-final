@@ -1,0 +1,24 @@
+.collapseInput {
+  position: absolute;
+  top: 55px;
+  width: 400px;
+  z-index: 999;
+}
+
+#map {
+  height: 600px;
+}
+
+#autocomplete {
+  width: 100%;
+  max-width: 500px;
+}
+
+.formNoJustify {
+  justify-content: flex-start;
+}
+
+.resultsHolder {
+  max-height: 700px;
+  overflow: scroll;
+}

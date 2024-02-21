@@ -1,0 +1,10 @@
+<div class="card mt-2">
+  <div class="card-body">
+    <h5 class="card-title">Offer for <a [routerLink]="['/listing', offer.listingId]">{{offer.listingTitle}}</a></h5>
+    <h6 class="card-title">From: {{offer.buyerName}}</h6>
+    <h6 class="card-title">Offer price: ${{offer.offerPrice}}</h6>
+    <div class="card-text">{{offer.textBody}}</div>
+    <h6 class="card-title">Submitted on:</h6>
+    <div class="card-text">{{request.createdAt.toLocaleDateString("en-US")}}</div>
+  </div>
+</div>

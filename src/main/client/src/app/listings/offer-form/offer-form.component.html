@@ -1,0 +1,20 @@
+<div class="container">
+  <h3>Make an offer on {{listing.title}}, from {{listing.realtorName}}</h3>
+  <form role="form" (submit)="submitOffer()">
+    <div class="form-group">
+      <label for="offerPrice">Your price:</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">$</span>
+        </div>
+        <input type="number" [(ngModel)]="offer.offerPrice" name="offerPrice" id="offerPrice" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textBody">Your comments:</label>
+      <textarea [(ngModel)]="offer.textBody" name="textBody" id="textBody" rows="10" class="form-control"></textarea>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+</div>
+  

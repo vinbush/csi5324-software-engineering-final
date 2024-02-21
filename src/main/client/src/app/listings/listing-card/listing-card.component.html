@@ -1,0 +1,10 @@
+<div class="card mt-2">
+  <img *ngIf="hasPhoto" class="img-fluid cardPhoto" [src]="sanitizer.bypassSecurityTrustUrl(photo)" alt="Photo">
+  <div class="card-body">
+    <h5 class="card-title">{{listing.title}}</h5>
+    <h6 class="card-title">${{listing.listingPrice}}</h6>
+    <div class="card-text">{{listing.getAddress()}}</div>
+    <div class="card-text mt-2">{{listing.numBed}} bed, {{listing.numBath}} bath {{dataService.LISTING_TYPES.get(listing.listingType)}}</div>
+    <a [routerLink]="['/listing', listing.id]" class="alert-link">View details</a>
+  </div>
+</div>

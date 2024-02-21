@@ -1,0 +1,10 @@
+<div class="container">
+  <h3>Request information about {{listing.title}}, from {{listing.realtorName}}</h3>
+  <form role="form" (submit)="submitRequest()">
+    <div class="form-group">
+      <label for="textBody">Your questions:</label>
+      <textarea [(ngModel)]="request.textBody" name="textBody" id="textBody" rows="10" class="form-control"></textarea>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+</div>

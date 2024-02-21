@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light mainNav mb-2">
+  <a class="navbar-brand" routerLink="/">PropertyPro</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#links" aria-controls="links" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="links">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/search">Search</a>
+      </li>
+      <li class="nav-item" [hidden]="!auth.isRealtor()">
+        <a class="nav-link" routerLinkActive="active" routerLink="/addlisting">Add Listing</a>
+      </li>
+    </ul>
+    <p class="mr-2" [hidden]="!auth.authenticated">Hello, {{auth.userName}}! <a routerLink="/profile">View your profile here</a></p>
+    <a class="btn btn-primary" [hidden]="auth.authenticated" routerLink="/login">Login</a>
+    <button class="btn btn-primary" [hidden]="!auth.authenticated" (click)="auth.logout()">Logout</button>
+  </div>
+</nav>

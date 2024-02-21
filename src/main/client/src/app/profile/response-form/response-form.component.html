@@ -1,0 +1,9 @@
+<h5>Responding to {{isOffer ? 'offer' : 'request'}} from {{request.buyerName}}</h5>
+<h6>Original message:</h6>
+<p>{{request.textBody}}</p>
+<form role="form">
+  <div class="form-group">
+    <textarea [(ngModel)]="response.textBody" name="textBody" id="textBody" rows="10" class="form-control"></textarea>
+  </div>
+</form>
+<button type="button" (click)="sendResponse()" class="btn btn-primary">Submit</button>

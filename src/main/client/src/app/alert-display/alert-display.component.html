@@ -1,0 +1,11 @@
+<div class="alertHolder">
+  <div *ngFor="let alert of alertService.getAlerts(); let i = index">
+    <div [class] = "'alert ' + getAlertClass(alert.alertLevel) + ' alert-dismissible mt-2'">
+      <div>{{alert.message}}</div>
+      <a *ngIf="alert.routerLink" [routerLink]="alert.routerLink">Link</a>
+      <button type="button" class="close" aria-label="Close" (click)="alertService.dismissAlert(i)">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+</div>

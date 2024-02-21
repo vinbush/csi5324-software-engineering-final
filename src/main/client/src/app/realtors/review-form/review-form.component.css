@@ -1,0 +1,41 @@
+/****** Style Star Rating Widget by James Barnett *****/
+/****** https://codepen.io/jamesbarnett/pen/vlpkh *****/
+
+/* @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label.ratingLabel { margin: 0; padding: 0; }
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input.ratingInput { display: none; } 
+.rating > label.ratingLabel:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label.ratingLabel { 
+  color: #ddd; 
+ float: right; 
+} */
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+/* .rating > input.ratingInput:checked ~ label.ratingLabel, 
+.rating:not(:checked) > label.ratingLabel:hover,
+.rating:not(:checked) > label.ratingLabel:hover ~ label { color: #FFD700;  } 
+
+.rating > input.ratingInput:checked + label.ratingLabel:hover,
+.rating > input.ratingInput:checked ~ label.ratingLabel:hover,
+.rating > label.ratingLabel:hover ~ input.ratingInput:checked ~ label.ratingLabel,
+.rating > input.ratingInput:checked ~ label.ratingLabel:hover ~ label.ratingLabel { color: #FFED85;  }  */

@@ -1,0 +1,42 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  activemq:
+    in-memory: true
+    pool:
+      enabled: false
+    packages:
+      trust-all: true
+  
+  http:
+    multipart:
+      max-file-size: 5120KB
+      max-request-size: 51200KB
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+  data:
+    rest:
+      base-path: /api
+
+  datasource:
+    url: ${JDBC_CONNECTION:jdbc:postgresql://localhost:5432/propertypro}
+    username: ${SPRING_DATASOURCE_USERNAME:propertypro}
+    password: ${SPRING_DATASOURCE_PASSWORD:propertypro}
+    auto-commit: false
+
+  # security:
+  #   user:
+  #     password: password
+    # ignored: 
+    #   - "*.bundle.*"
+    #   - "*.js"

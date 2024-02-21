@@ -1,0 +1,29 @@
+<div class="card-body">
+  <h5 class="card-title">{{request.offerPrice ? "Offer" : "Information request"}} for <a [routerLink]="['/listing', request.listingId]">{{request.listingTitle}}</a></h5>
+  <h6 class="card-title">From: {{request.buyerName}}</h6>
+  <h6 *ngIf="request.offerPrice" class="card-title">Offer price: ${{request.offerPrice}}</h6>
+  <hr>
+  <h6 class="card-title">Message:</h6>
+  <div *ngIf="request.textBody.length < 150">
+    <div class="card-text mb-2">{{request.textBody}}</div>
+  </div>
+  <div *ngIf="request.textBody.length > 150">
+    <div *ngIf="expandedText">
+        <div class="card-text mb-2">{{request.textBody}}</div>
+        <button class="btn btn-sm btn-link" (click)="toggleText()">Show less</button>
+    </div>
+    <div *ngIf="!expandedText">
+      <div class="card-text mb-2">{{request.textBody.substring(0, 149)}}...</div>
+      <button class="btn btn-sm btn-link" (click)="toggleText()">Read more</button>
+    </div>
+  </div>
+  <hr>
+  <h6 class="card-title">Submitted at:</h6>
+  <div class="card-text">{{request.createdAt | date:'MM/dd/yyyy h:mm a'}}</div>
+  <div *ngIf="request.response">
+    <hr>
+    <h6 class="card-title">Received response at:</h6>
+    <div class="card-text">{{request.response.createdAt | date:'MM/dd/yyyy h:mm a'}}</div>
+  </div>
+</div>
+  
